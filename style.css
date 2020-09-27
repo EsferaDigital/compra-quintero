@@ -1,0 +1,798 @@
+/*
+  Theme Name: Compra en Quintero
+  Theme URI: https://github.com/EsferaDigital/
+  Author: Gabriel Zavando
+  Author URI: https://esferadigital.cl/
+  Description: Tema personalizado para el sitio web Compra en Quintero
+  Version: 1.1.0
+  License: GNU General Public Licence v2 or later
+  License URI: http://www.gnu.org/licenses/gpl-2.0.html
+  Tags: Responsive, ancho completo, sidebar, dos columnas, grid, directorio de emprendedores
+  Text Domain: qtr
+*/
+
+:root{
+  --primario:  #cb6221;
+  --secundario: #da9332;
+  --terciario: #16A7AB;
+  --hover: #dabc94;
+  --gris: #505050;
+  --creditos: #a04107;
+  --blanco: #ffffff;
+  --degradado: linear-gradient(to bottom, rgba(203,98,33,1) 0%, rgba(218,147,50,1) 100%);
+}
+
+html{
+  font-family: 'Verdana', sans-serif;
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+body{
+  font-family: 'Verdana', sans-serif;
+  font-size: 16px;
+  font-size: 1.6rem;
+  line-height: 1.5;
+  max-width: 1480px;
+  margin: auto;
+}
+
+*, *:before, *:after{
+  box-sizing: inherit;
+}
+
+h1, h2, h3, h4{
+  margin: 1rem 0;
+  line-height: 1.2;
+}
+
+h1{font-size: 6rem;}
+h1{font-size: 4.8rem;}
+h1{font-size: 3.6rem;}
+h1{font-size: 2.4rem;}
+
+a{
+  text-decoration: none;
+}
+
+ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+img{
+  max-width: 100%;
+  display: block;
+  height: auto;
+}
+
+.contenedor{
+  max-width: 1200px;
+  width: 95%;
+  margin: 0 auto;
+}
+
+.Container-central{
+  /* border: 2px solid var(--primario); */
+  /* border-radius: 20px; */
+  margin-top: 1.5rem;
+  padding: 0 2.5%;
+  max-width: 1100px;
+  background-color: var(--blanco);
+}
+
+.Container-central h2{
+  color: var(--secundario);
+  text-align: center;
+  padding: 1rem 0;
+}
+
+/* Header */
+
+.site-header{
+  background: var(--degradado);
+  padding: 0;
+}
+
+@media(min-width: 768px) {
+  .barra-navegacion{
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.logo{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo a{
+  color: var(--blanco);
+  font-size: 2.2rem;
+}
+
+@media(min-width: 768px) {
+  .logo a{
+    font-size: 2.5rem;
+  }
+}
+
+/* Menu Principal */
+
+.menu-principal{
+  display: none;
+}
+
+@media (min-width: 768px){
+  .menu-principal{ /* nav */
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  .menu-principal .menu{ /* ul */
+    display: flex;
+    justify-content: space-around;
+  }
+  .menu-principal li{
+    position: relative;
+  }
+
+  .menu-principal li:hover .sub-menu{
+    visibility: visible;
+    opacity: 1;
+  }
+  .menu-principal a:last-child{
+    margin-right: 2rem;
+    /* border: 2px solid pink; */
+  }
+
+  .sub-menu{
+    /* border: 2px solid red; */
+    position: absolute;
+    background: var(--degradado);
+    z-index: 5;
+    width: 140%;
+    visibility: hidden;
+    right: 0;
+    opacity: 0;
+    transition: opacity 1.5s;
+  }
+  .sub-menu a{
+    margin-right: 0 !important;
+    font-size: 1.6rem !important;
+    text-align: center !important;
+    /* border: 2px solid blue; */
+  }
+}
+
+.menu-principal a{
+  color: var(--blanco);
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 1rem 2rem;
+  display: block;
+  /* border: 2px solid green; */
+}
+
+
+@media(min-width: 768px) {
+  .menu-principal a{
+    position: relative;
+    z-index: 1;
+    padding: .5rem 1rem;
+  }
+
+  .menu-principal a:before,
+  .menu-principal a:after{
+    position: absolute;
+    left: 0;
+    content: '';
+    display: block;
+    width: 100%;
+    height: 50%;
+    background-color: var(--hover);
+    z-index: -1;
+    transform: scaleX(0);
+    transition: transform .6s;
+  }
+
+  .menu-principal a:before{
+    top: 0;
+    transform-origin: left;
+  }
+
+  .menu-principal a:after{
+    top: 50%;
+    transform-origin: right;
+  }
+
+  .menu-principal a:hover::before{
+    transform: scaleX(1);
+  }
+  .menu-principal a:hover::after{
+    transform: scaleX(1);
+  }
+}
+
+.menu-principal .current_page_item a{
+  background-color: var(--hover);
+}
+
+.sub-menu li{
+  margin-right: 0;
+}
+
+/* Reescribir estilos menu movil */
+
+.slicknav_menu{
+  display: flex;
+  background: transparent;
+  align-items: center;
+  flex-direction: column;
+}
+@media(min-width: 768px) {
+  .slicknav_menu{
+    display: none;
+  } 
+}
+
+.slicknav_btn{
+  background: transparent;
+  color: var(--blanco);
+  margin: .5rem 0;
+}
+
+.slicknav_nav a{
+  text-align: center;
+  color: var(--blanco);
+  outline: none;
+}
+
+.slicknav_nav a:hover{
+  background: transparent;
+  color: var(--blanco);
+}
+
+.slicknav_item.slicknav_row:hover{
+  background: transparent;
+}
+
+/* Footer */
+
+.site-footer{
+  background-color: var(--primario);
+  margin-top: 2rem;
+}
+
+.Footer-container{
+  width: 95%;
+  margin: auto;
+  padding: 1rem 0;
+  /* border: 1px solid red; */
+}
+
+@media(min-width: 640px) {
+  .Footer-container{
+    display: flex;
+    align-items: center;
+    padding: 2rem 0;
+  }
+}
+
+.Footer-container-item{
+  padding: 2rem 0;
+  /* border: 1px solid red; */
+}
+
+.Footer-container-item.imagen{
+  width: 80%;
+  margin: 0 auto;
+  padding-bottom: 0;
+  /* border: 1px solid blue; */
+}
+
+@media(min-width: 640px) {
+  .Footer-container-item.imagen{
+    padding: 0;
+  }
+  .Footer-container-item.gnl{
+    padding: 0;
+  }
+}
+
+.Footer-container-item.gnl{
+  width: 80%;
+  margin: 0 auto;
+  /* border: 1px solid pink; */
+}
+
+
+@media(min-width: 768px) {
+  .Footer-container-item.imagen{
+    width: 15%;
+  }
+  .Footer-container-item.gnl{
+    width: 30%;
+  }
+}
+
+@media(min-width: 1200px) {
+  .Footer-container-item.imagen{
+    width: 10%;
+  }
+  .Footer-container-item.gnl{
+    width: 25%;
+  }
+}
+
+.Footer-container-item img.logo-footer{
+  display: block;
+  width: 30%;
+  margin: auto;
+}
+
+@media(min-width: 768px) {
+  .Footer-container-item img.logo-footer{
+    width: 100%;
+  }
+}
+
+.Footer-container-item img.logo-gnl{
+  display: block;
+  width: 90%;
+  margin: auto;
+}
+
+/* Copy */
+
+.Card-copy{
+  padding: .5rem 2.5%;
+}
+
+@media(min-width: 768px) {
+  .Card-copy{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.Card-copy p{
+  margin: 0 auto;
+  padding: .5rem 0;
+  text-align: center;
+  color: var(--blanco);
+  font-size: 1.4rem;
+}
+
+@media(min-width: 768px) {
+  .Card-copy p{
+    margin: 0;
+    margin-right: 1rem;
+  }
+}
+
+/* Creditos */
+
+.Box-creditos{
+  background-color: var(--creditos);
+  color: var(--blanco);
+  padding: .5rem 2.5%;
+}
+
+.Box-creditos p{
+  font-size: 1.3rem;
+  text-align: center;
+  margin: 0;
+}
+
+.Box-creditos a{
+  text-decoration: none;
+  color: var(--terciario);
+  font-size: 1.4rem;
+}
+
+.Box-creditos a:hover{
+  color: var(--blanco);
+}
+
+/* Buscador */
+
+/* contenedor del buscador */
+.um-member-directory-header.um-form{
+  /* border: 2px solid red; */
+  position: relative;
+  top: -45px !important;
+  padding: 0 !important;
+}
+
+/* search-form um-search-form */
+
+@media(min-width: 768px) {
+  .um-member-directory-header.um-form{
+    top: -60px !important;
+  }
+}
+
+body > div.contenedor.Container-central > div > div.um-member-directory-header.um-form > div{
+  /* border: 2px solid green; */
+  margin: 0;
+  width: 100%;
+}
+
+/* ancho del buscador */
+.um-member-directory-search-line{
+  /* border: 2px solid blue; */
+  width: 80% !important;
+  margin: auto;
+}
+
+@media(min-width: 768px) {
+  .um-member-directory-search-line{
+    width: 60% !important;
+  }
+}
+
+@media(min-width: 1024px) {
+  .um-member-directory-search-line{
+    width: 40% !important;
+  }
+}
+
+.um-member-directory-search-line label{
+  width: 50%;
+  margin-right: 0 !important;
+  padding: 0 !important;
+}
+
+.um-member-directory-search-line input{
+  width: 50%;
+  /* border: 2px solid red; */
+}
+
+/* Buscador central */
+.um-member-directory-search-line label input.um-search-line{
+  font-size: .9rem !important;
+  padding: 0 !important;
+  height: 2rem !important;
+  text-align: center;
+  border-radius: 15px 0 0 15px;
+}
+
+@media(min-width: 768px) {
+  .um-member-directory-search-line label input.um-search-line{
+    height: 2.5rem !important;
+    font-size: 1.2rem !important;
+  }
+}
+
+@media(min-width: 1200px) {
+  .um-member-directory-search-line label input.um-search-line{
+    height: 3rem !important;
+  }
+}
+
+button.um-do-search.um-button{
+  background-color: var(--primario);
+  height: 2rem !important;
+  padding: 0 !important;
+  border-radius: 0 15px 15px 0 !important;
+  position: relative;
+  cursor: pointer;
+}
+
+@media(min-width: 768px) {
+  button.um-do-search.um-button{
+    height: 2.5rem !important;
+  }
+}
+
+@media(min-width: 1200px) {
+  button.um-do-search.um-button{
+    height: 3rem !important;
+  }
+}
+
+button.um-do-search.um-button i{
+  position: absolute;
+  top: .5rem;
+  font-size: 1.2rem;
+  margin: 0 auto;
+  right: 0;
+  left: 0;
+}
+
+@media(min-width: 768px) {
+  button.um-do-search.um-button i{
+    font-size: 1.5rem;
+    top: .7rem;
+  }
+}
+
+@media(min-width: 1200px) {
+  button.um-do-search.um-button i{
+    top: 1rem;
+  }
+}
+
+.um-member-directory-nav-line{
+  /* border: 2px solid red; */
+  width: 90% !important;
+  margin: auto !important;
+}
+
+@media(min-width: 768px) {
+  .um-member-directory-nav-line{
+    width: 60% !important;
+  }
+}
+
+.um-member-directory-nav-line a{
+  color: var(--primario);
+}
+
+/* Buscador en páginas */
+
+.um-search-area{
+  /* border: 1px solid red; */
+  width: 100%;
+  max-width: 420px !important;
+  position: relative;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 5rem;
+}
+
+input.um-search-field.search-field{
+  border: 1px solid var(--primario);
+  padding: 1rem;
+  font-size: .9rem;
+  border-radius: 20px 0 0 20px;
+  /* border: 1px solid blue; */
+  /* margin: 0 auto; */
+  outline: none;
+}
+
+@media(min-width: 768px) {
+  input.um-search-field.search-field{
+    font-size: 1.2rem;
+  }
+}
+
+#um-search-button{
+  width: 5rem;
+  height: 100%;
+  position: absolute;
+  border-radius: 0 20px 20px 0;
+  top: 0;
+  right: 0;
+  text-align: center;
+  background-color: var(--primario);
+  color: var(--blanco);
+  transition: background-color .5s;
+}
+
+#um-search-button:hover{
+  background-color: var(--secundario);
+}
+
+#um-search-button:active{
+  transform: scale(.9);
+  border: 1px solid var(--primario);
+}
+
+#um-search-button::before{
+  color: var(--blanco);
+  position: absolute;
+  top: 25%;
+  right: 0;
+  left: 0;
+  bottom: 0;
+}
+
+.Container-central > div.um.um-profile.um-viewing.um-7.um-role-um_usuario > div > div.um-cover > div.um-cover-e{
+  /* border: 1px solid green; */
+  margin-top: 1rem;
+}
+
+@media(min-width: 768px) {
+  .Container-central > div.um.um-profile.um-viewing.um-7.um-role-um_usuario > div > div.um-cover > div.um-cover-e{
+    margin-top: 2rem;
+  }
+}
+
+
+/* Pagina del perfil */
+
+body.um-page-user{
+  background-image: url('./img/fondo.jpg');
+  background-size: contain;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+body.um-page-user .Container-central{
+  margin: 3rem auto;
+  padding-top: 1rem;
+}
+
+@media(min-width: 768px) {
+  body.um-page-user .Container-central{
+    padding-top: 2rem;
+  }
+}
+
+/* Pagina inicio Banner */
+
+.Banner-inicio{
+  background-image: url('./img/banner-cabecera.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* border: 2px solid red; */
+  width: 100%;
+  height: 150px;
+  position: relative;
+  /* top: -1rem; */
+}
+
+@media(min-width: 768px) {
+  .Banner-inicio{
+    top: 0;
+    height: 220px;
+  }
+}
+
+.Banner-inicio img{
+  display: block;
+  width: 25%;
+  margin: 0 auto;
+  position: relative;
+  top: 1rem;
+}
+
+@media(min-width: 768px) {
+  .Banner-inicio img{
+    width: 18%;
+  }
+}
+
+@media(min-width: 1024px) {
+  .Banner-inicio img{
+    width: 15%;
+  }
+}
+
+@media(min-width: 1200px) {
+  .Banner-inicio img{
+    width: 15%;
+  }
+}
+
+.Banner-inicio p{
+  color: var(--blanco);
+  margin: 0 auto;
+  font-size: .9rem;
+  text-align: center;
+  display: block;
+  width: 60%;
+  max-width: 450px;
+  position: relative;
+  top: 2rem;
+  font-weight: bold;
+  /* border: 2px solid red; */
+}
+
+@media(min-width: 768px) {
+  .Banner-inicio p{
+    font-size: 1.5rem;
+    /* padding-bottom: 1rem; */
+  }
+}
+
+@media(min-width: 1200px) {
+  .Banner-inicio p{
+    top: 1rem;
+  }
+}
+
+.um-member-photo{
+  /* border: 2px solid red; */
+  display: none;
+}
+
+/* .um-member-card{
+  border: 2px solid red;
+} */
+
+.um-member-card .um-member-name a{
+  margin-top: 1rem;
+  color: var(--secundario) !important;
+}
+
+.um-member-card .um-member-tagline.um-member-tagline-categorias_um{
+  color: var(--secundario) !important;
+  /* border: 2px solid red; */
+}
+
+/* Colres personalizados */
+
+input#um-submit-btn.um-button, input.um-button{
+  /* border: 2px solid red !important; */
+  background: var(--secundario) !important ;
+  transform: all .3s;
+}
+
+input#um-submit-btn.um-button:hover, input.um-button:hover{
+  /* border: 2px solid red !important; */
+  background: var(--hover) !important ;
+}
+
+.um-field-label-icon > i{
+  color: var(--secundario) !important;
+}
+
+.um-field-checkbox-state > i{
+  color: var(--secundario) !important;
+}
+
+i.um-icon-help-circled{
+  color: var(--secundario) !important;
+}
+
+i.um-icon-help-circled:hover{
+  color: var(--secundario) !important;
+}
+
+/* Formulario Perfil */
+
+/* .um-profile-meta{
+  border: 2px solid red;
+} */
+
+/* Revisar colores */
+.um-profile-meta .um-main-meta .um-name > a{
+  color: var(--primario) !important;
+}
+
+[class^="um-faicon-"]:before, [class*=" um-faicon-"]:before{
+  /* background-color: red; */
+  color: var(--primario);
+}
+
+/* .um-dropdown-b{
+  border: 1px solid var(--amarillo);
+} */
+
+.um-dropdown-b > ul> li > a{
+  color: var(--gris) !important;
+}
+
+.um-dropdown-b > ul> li > a:hover{
+  color: var(--secundario) !important;
+}
+
+.um-profile-nav{
+  background: var(--secundario) !important;
+}
+
+.um-profile-nav-item.active a{
+  background: var(--gris) !important;
+}
+
+.um-account-name a{
+  color: var(--secundario) !important;
+}
+
+.um-account-profile-link > a.um-link{
+  color: red !important;
+}
+
+.um-account-profile-link > a.um-link:hover{
+  color: var(--hover) !important;
+}
+
+
+
+
