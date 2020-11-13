@@ -18,11 +18,13 @@ if(!isset($content_width)){
 //Establecer variables globales y asignar un valor a esas variables
 
 global $font_awesome;
+global $animate;
 // global $Jquery;
 // global $slicknavCSS;
 // global $slicknavJS;
 
 $font_awesome = 'https://use.fontawesome.com/releases/v5.7.2/css/all.css';
+$animate = 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css';
 // $Jquery = 'https://code.jquery.com/jquery-3.4.1.min.js';
 
 
@@ -33,6 +35,7 @@ if(!function_exists('qtr_scripts')):
   function qtr_scripts() {
     // Declaramos variables
     global $font_awesome;
+    global $animate;
     // global $Jquery;
 
     // $sweet = 'https://cdn.jsdelivr.net/npm/sweetalert2@8';
@@ -41,16 +44,17 @@ if(!function_exists('qtr_scripts')):
     // Registramos los archivos css
 
     wp_enqueue_style('iconos', $font_awesome, array(), '5.7.2', 'all' );
+    wp_enqueue_style('animate', $animate, array(), '3.7.2', 'all' );
     wp_enqueue_style('normalize', get_template_directory_uri() . '/css/normalize.css', array(), '8.0.1');
 
     wp_enqueue_style('slicknavCSS', get_template_directory_uri() . '/css/slicknav.min.css', array(), '1.0.10');
-    wp_enqueue_style('style', $style, array('normalize'), '1.0.0');
+    wp_enqueue_style('style', $style, array('normalize'), fileatime(get_template_directory() . '/style.css'), 'all');
 
     // Registramos los archivos js
 
     // wp_register_script('Jquery', $Jquery, array(), '3.4.1', true);
     wp_enqueue_script('slicknavJS', get_template_directory_uri() . '/js/jquery.slicknav.js', array('jquery'), '1.0.10', true);
-    wp_enqueue_script('globaljs', get_template_directory_uri() . '/js/scripts.js', array('jquery', 'slicknavJS'), '1.0.0', true);
+    wp_enqueue_script('globaljs', get_template_directory_uri() . '/js/scripts.js', array('jquery', 'slicknavJS'), fileatime(get_template_directory() . '/js/scripts.js'), true);
 
   }
 endif;
