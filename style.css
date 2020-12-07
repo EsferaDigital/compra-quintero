@@ -43,7 +43,7 @@ body{
   font-size: 16px;
   font-size: 1.6rem;
   line-height: 1.5;
-  max-width: 1480px;
+  max-width: 1920px;
   margin: auto;
 }
 
@@ -84,7 +84,7 @@ img{
 }
 
 .Container-central{
-  /* border: 2px solid var(--primario); */
+  min-height: 65.1vh;
   /* border-radius: 20px; */
   /* margin-top: 1.5rem; */
   margin: 1.5rem auto auto;
@@ -164,7 +164,7 @@ img{
     position: absolute;
     background: var(--degradado);
     z-index: 5;
-    width: 140%;
+    width: 160%;
     visibility: hidden;
     right: 0;
     opacity: 0;
@@ -416,60 +416,60 @@ img{
 
 :root{
   /* Posicion del buscador */
-  --con-categorias: -97rem;
+  --con-categorias: -93rem;
   --sin-categorias: -9.5rem;
 }
 
 @media(min-width: 360px) {
   :root{
-    --con-categorias: -95.5rem;
+    --con-categorias: -91.5rem;
     --sin-categorias: -10rem;
   }
 }
 
 @media(min-width: 411px) {
   :root{
-    --con-categorias: -96.5rem;
+    --con-categorias: -92rem;
   }
 }
 
 @media(min-width: 568px) {
   :root{
-    --con-categorias: -101.5rem;
+    --con-categorias: -95rem;
   }
 }
 
 @media(min-width: 640px) {
   :root{
-    --con-categorias: -80.5rem;
+    --con-categorias: -78.5rem;
     --sin-categorias: -10rem;
   }
 }
 
 @media(min-width: 731px) {
   :root{
-    --con-categorias: -73rem;
+    --con-categorias: -71rem;
     --sin-categorias: -9.3rem;
   }
 }
 
 @media(min-width: 768px) {
   :root{
-    --con-categorias: -76rem;
+    --con-categorias: -73.5rem;
     --sin-categorias: -12rem;
   }
 }
 
 @media(min-width: 1024px) {
   :root{
-    --con-categorias: -68rem;
+    --con-categorias: -65rem;
     --sin-categorias: -12rem;
   }
 }
 
 @media(min-width: 1200px) {
   :root{
-    --con-categorias: -70rem;
+    --con-categorias: -66.5rem;
   }
 }
 
@@ -712,10 +712,6 @@ button.um-do-search.um-button:active{
   border: 1px solid rgba(80, 80, 80, 0.4);
 }
 
-/* .Categorias > a > img{
-  border: 1px solid green;
-} */
-
 .Categorias > a > h4{
   /* border: 1px solid violet; */
   color: var(--secundario);
@@ -842,6 +838,18 @@ body.um-page-user .Container-central{
   border-radius: 20px;
 }
 
+.um-profile-photo{
+  display: none;
+}
+
+.um-profile-meta{
+  padding-left: 0 !important;
+}
+
+.um-profile-nav{
+  display: none;
+}
+
 @media(min-width: 768px) {
   body.um-page-user .Container-central{
     padding-top: 2rem;
@@ -935,6 +943,7 @@ body.um-page-user .Container-central{
 @media(min-width: 1200px) {
   .Banner-inicio img{
     width: 17%;
+    max-width: 230px;
   }
 }
 
@@ -977,6 +986,69 @@ body.um-page-user .Container-central{
     top: 1.9rem;
     font-size: 1.7rem;
   }
+}
+
+/* Página restaurantes */
+.listado-blog{
+  display: block;
+}
+
+@media(min-width: 640px) {
+  .listado-blog{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+}
+
+@media(min-width: 1024px) {
+  .listado-blog{
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media(min-width: 1024px) {
+  .listado-blog{
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 2rem;
+  }
+}
+
+.PostCard{
+  border: 1px solid var(--primario);
+  margin-bottom: 1rem;
+}
+
+@media(min-width: 640px) {
+  .PostCard{
+    margin-bottom: 0;
+  }
+}
+
+.PostCard-titulo{
+  color: var(--primario);
+  padding: 1rem;
+}
+
+.PostCard-extracto{
+  padding: 0 1rem;
+}
+
+.PostCard-extracto > p{
+  color: var(--gris);
+}
+
+.PostCard-link{
+  padding: 0 1rem 1rem;
+  text-align: right;
+}
+
+.PostCard-link > a{
+  color: var(--secundario);
+}
+
+.PostCard-link > a:hover{
+  color: var(--hover);
 }
 
 /* texto de resultado de busquedas */
@@ -1071,8 +1143,6 @@ body.um-page-user .Container-central{
   display: none !important;
 }
 
-
-
 /* Colores personalizados */
 
 input#um-submit-btn.um-button, input.um-button{
@@ -1102,10 +1172,6 @@ i.um-icon-help-circled:hover{
 
 /* Formulario Perfil */
 
-/* .um-profile-meta{
-  border: 2px solid red;
-} */
-
 .um-profile-meta .um-main-meta .um-name > a{
   color: var(--primario) !important;
 }
@@ -1123,12 +1189,6 @@ a.um-tip-n > i{
   /* border: 2px solid red; */
   color: var(--secundario) !important;
 }
-
-
-
-/* .um-dropdown-b{
-  border: 1px solid var(--amarillo);
-} */
 
 body > div.contenedor.Container-central > div > div.um-members-pagination-box > div.um-members-pagi.uimob340-hide.uimob500-hide > span.pagi.current{
   background-color: var(--hover);

@@ -12,7 +12,7 @@
 
 //Establecer el ancho máximo permitido para cualquier contenido en el tema, como por ejemplo, embeds e imágenes.
 if(!isset($content_width)){
-  $content_width = 800;
+  $content_width = 1600;
 }
 
 //Establecer variables globales y asignar un valor a esas variables
@@ -84,36 +84,6 @@ if(!function_exists('qtr_register_sidebars')):
       'before_title' => '<h3>',
       'after_title' => '</h3>'
     ));
-
-    // register_sidebar(array(
-    //   'name' => __('Footer Columna I', 'qtr'),
-    //   'id' => 'footer_uno',
-    //   'description' => __('Columna uno del footer.', 'qtr'),
-    //   'before_widget' => '<article id="%1$s" class="Widget %2$s">',
-    //   'after_widget' => '</article>',
-    //   'before_title' => '<h3>',
-    //   'after_title' => '</h3>'
-    // ));
-
-    // register_sidebar(array(
-    //   'name' => __('Footer Columna II', 'qtr'),
-    //   'id' => 'footer_dos',
-    //   'description' => __('Columna dos del footer.', 'qtr'),
-    //   'before_widget' => '<article id="%1$s" class="Widget %2$s">',
-    //   'after_widget' => '</article>',
-    //   'before_title' => '<h3>',
-    //   'after_title' => '</h3>'
-    // ));
-
-    // register_sidebar(array(
-    //   'name' => __('Footer Columna III', 'qtr'),
-    //   'id' => 'footer_tres',
-    //   'description' => __('Columna tres del footer.', 'qtr'),
-    //   'before_widget' => '<article id="%1$s" class="Widget %2$s">',
-    //   'after_widget' => '</article>',
-    //   'before_title' => '<h3>',
-    //   'after_title' => '</h3>'
-    // ));
   }
 endif;
 add_action('widgets_init', 'qtr_register_sidebars');
@@ -123,6 +93,10 @@ if(!function_exists('qtr_setup')):
   function qtr_setup() {
     // soporte a imagen destacada
     add_theme_support('post-thumbnails');
+
+    // Agregamos imagenes de tamaño personalizado
+    add_image_size('blog', 1600, 500, true);
+    add_image_size('card', 600, 200, true);
 
     //soporte a etiquetas semánticas de html5
     add_theme_support('html5', array(
@@ -146,6 +120,40 @@ if(!function_exists('qtr_setup')):
       'chat'
     ));
 
+    // Soporte a colores para editor gutenberg
+    add_theme_support('editor-color-palette', array(
+      array(
+        'name' => __('Naranjo', 'qtr'),
+        'slug' => 'naranjo',
+        'color' => '#cb6221',
+      ),
+      array(
+        'name' => __('Naranjo claro', 'qtr'),
+        'slug' => 'naranjo-claro',
+        'color' => '#da9332',
+      ),
+      array(
+        'name' => __('Naranjo pálido', 'qtr'),
+        'slug' => 'naranjo-palido',
+        'color' => '#dabc94',
+      ),
+      array(
+        'name' => __('Gris', 'qtr'),
+        'slug' => 'gris',
+        'color' => '#505050',
+      ),
+      array(
+        'name' => __('Naranjo oscuro', 'qtr'),
+        'slug' => 'naranjo-oscuro',
+        'color' => '#a04107',
+      ),
+      array(
+        'name' => __('Blanco', 'qtr'),
+        'slug' => 'blanco',
+        'color' => '#ffffff',
+      ),
+    ));
+
     //Soporte a títulos dinámicos de páginas del sitio (para el SEO)
     add_theme_support('title-tag');
 
@@ -162,4 +170,7 @@ add_action('after_setup_theme', 'qtr_setup');
 require_once get_template_directory() . '/inc/custom-header.php';
 require_once get_template_directory() . '/inc/custom-excerpt.php';
 require_once get_template_directory() . '/inc/custom-description.php';
+
+// Consultas reutilizables
+require get_template_directory() . '/inc/queries.php';
 

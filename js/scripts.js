@@ -4,6 +4,8 @@ jQuery(document).ready(function($){
     prependTo: '.site-header',
   });
 
+  
+
   $(window).load(function() {
     var url = window.location.href
     // si existe el simbolo ? en la url
